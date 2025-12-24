@@ -9,7 +9,6 @@ const brightness = document.getElementById("brightness");
 const saturation = document.getElementById("saturation");
 const quality = document.getElementById("quality");
 const fps = document.getElementById("fps");
-
 const qualityValue = document.getElementById("qualityValue");
 const fpsValue = document.getElementById("fpsValue");
 
