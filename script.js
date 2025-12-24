@@ -1,55 +1,62 @@
+// Importer la vidéo
 document.getElementById('video-input').addEventListener('change', (event) => {
   const file = event.target.files[0];
-  const videoPreview = document.getElementById('video-preview');
+  const video = document.getElementById('video-preview');
 
   if (file) {
-    const videoURL = URL.createObjectURL(file);
-    videoPreview.src = videoURL;
-    videoPreview.style.display = 'block';
+    video.src = URL.createObjectURL(file);
+    video.style.display = 'block';
+    video.load();
   }
 });
 
-// Appliquer les pré-réglages aux curseurs
+// Préréglages
 document.querySelectorAll('.preset').forEach(button => {
-  button.addEventListener('click', (event) => {
-    const sharpness = event.target.dataset.sharpness;
-    const contrast = event.target.dataset.contrast;
-    const brightness = event.target.dataset.brightness;
-    const saturation = event.target.dataset.saturation;
-
-    document.getElementById('sharpness').value = sharpness;
-    document.getElementById('contrast').value = contrast;
-    document.getElementById('brightness').value = brightness;
-    document.getElementById('saturation').value = saturation;
+  button.addEventListener('click', () => {
+    document.getElementById('sharpness').value = button.dataset.sharpness;
+    document.getElementById('contrast').value = button.dataset.contrast;
+    document.getElementById('brightness').value = button.dataset.brightness;
+    document.getElementById('saturation').value = button.dataset.saturation;
   });
 });
 
-// Transformer la vidéo avec les pré-réglages
+// BOUTON TRANSFORMER — VERSION QUI MARCHE
 document.getElementById('processButton').addEventListener('click', () => {
-  const videoPreview = document.getElementById('video-preview');
-  const progressElement = document.getElementById('progress');
+  const video = document.getElementById('video-preview');
+  const progress = document.getElementById('progress');
+
+  if (!video.src) {
+    alert("Importe une vidéo d'abord !");
+    return;
+  }
+
   const sharpness = document.getElementById('sharpness').value;
   const contrast = document.getElementById('contrast').value;
   const brightness = document.getElementById('brightness').value;
   const saturation = document.getElementById('saturation').value;
 
-  if (!videoPreview.src) {
-    alert("Veuillez d'abord importer une vidéo.");
-    return;
-  }
+  progress.textContent = "Transformation en cours...";
 
-  // Simuler la transformation avec les préréglages
-  progressElement.innerText = 'Transformation en cours...';
-  let progress = 0;
-  const interval = setInterval(() => {
-    progress += 10;
-    progressElement.innerText = `Progression : ${progress}%`;
-    if (progress >= 100) {
-      clearInterval(interval);
-      progressElement.innerText = 'Transformation terminée';
+  // Simulation de progression
+  let percent = 0;
+  const timer = setInterval(() => {
+    percent += 10;
+    progress.textContent = `Progression : ${percent}%`;
 
-      // Ici, on pourrait appliquer les préréglages à la vidéo.
-      // Pour simplifier, on laisse la vidéo telle quelle.
+    if (percent >= 100) {
+      clearInterval(timer);
+
+      // APPLICATION DES FILTRES VISUELS
+      video.style.filter = `
+        brightness(${brightness}%)
+        contrast(${contrast}%)
+        saturate(${saturation}%)
+      `;
+
+      // Simulation de netteté (hack visuel)
+      video.style.boxShadow = `0 0 ${sharpness / 10}px rgba(0,0,0,0.5)`;
+
+      progress.textContent = "Transformation terminée ✅";
     }
-  }, 500); // Simule la progression toutes les 0.5 secondes
+  }, 200);
 });
