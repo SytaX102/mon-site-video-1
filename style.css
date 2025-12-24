@@ -10,22 +10,64 @@ h1 {
   margin-bottom: 20px;
 }
 
-.import-section {
+.import-section, .controls-section {
   margin: 20px auto;
-  max-width: 600px;
+  max-width: 800px;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-input[type="file"] {
+.import-section input[type="file"] {
   margin-top: 10px;
 }
 
-video {
+.controls-section h2 {
+  margin-top: 0;
+}
+
+.controls-section .preset {
+  margin: 5px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #6c757d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.controls-section .preset:hover {
+  background-color: #5a6268;
+}
+
+.controls-section .adjustments label {
+  display: block;
+  margin-top: 10px;
+}
+
+.controls-section input[type="range"] {
   width: 100%;
-  max-width: 600px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 5px;
+}
+
+.controls-section button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.controls-section button:hover {
+  background-color: #0056b3;
+}
+
+.controls-section p {
+  margin-top: 10px;
+  font-weight: bold;
 }
