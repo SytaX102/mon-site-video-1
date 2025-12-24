@@ -2,34 +2,42 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Test Sliders</title>
+  <title>Amélioration Vidéo</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Test Sliders</h1>
+<h1>Amélioration Vidéo</h1>
 
 <div class="box">
 
+  <!-- IMPORT VIDEO -->
+  <input type="file" id="video-input" accept="video/*">
+
+  <!-- VIDEO -->
+  <video id="video-preview" controls></video>
+
+  <!-- SLIDERS -->
   <label>Netteté</label>
-  <input type="range" min="0" max="200" value="100">
+  <input type="range" id="sharpness" min="0" max="200" value="100">
 
   <label>Contraste</label>
-  <input type="range" min="50" max="200" value="100">
+  <input type="range" id="contrast" min="50" max="200" value="100">
 
   <label>Luminosité</label>
-  <input type="range" min="50" max="200" value="100">
+  <input type="range" id="brightness" min="50" max="200" value="100">
 
   <label>Saturation</label>
-  <input type="range" min="50" max="200" value="100">
+  <input type="range" id="saturation" min="50" max="200" value="100">
 
   <label>Qualité</label>
-  <input type="range" min="720" max="8000" step="720" value="1080">
+  <input type="range" id="quality" min="720" max="8000" step="720" value="1080">
 
   <label>FPS</label>
-  <input type="range" min="30" max="240" step="30" value="60">
+  <input type="range" id="fps" min="30" max="240" step="30" value="60">
 
 </div>
 
+<script src="script.js"></script>
 </body>
 </html>
