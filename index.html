@@ -2,38 +2,44 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Importation et Transformation de Vidéo</title>
+  <title>Video Enhancer</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>Importer et Transformer une Vidéo</h1>
+<h1>Amélioration Vidéo</h1>
 
-  <div class="import-section">
-    <input type="file" id="video-input" accept="video/*">
-    <video id="video-preview" controls style="display: none; margin-top: 20px; width: 100%; max-width: 600px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);"></video>
+<div class="container">
+
+  <input type="file" id="video-input" accept="video/*">
+
+  <video id="video-preview" controls></video>
+
+  <div class="controls">
+    <label>Netteté</label>
+    <input type="range" id="sharpness" min="0" max="200" value="100">
+
+    <label>Contraste</label>
+    <input type="range" id="contrast" min="50" max="200" value="100">
+
+    <label>Luminosité</label>
+    <input type="range" id="brightness" min="50" max="200" value="100">
+
+    <label>Saturation</label>
+    <input type="range" id="saturation" min="50" max="200" value="100">
   </div>
 
-  <div class="controls-section">
-    <h2>Pré-réglages</h2>
-    <button class="preset" data-sharpness="150" data-contrast="140" data-brightness="120" data-saturation="150">Préréglage 1</button>
-    <button class="preset" data-sharpness="100" data-contrast="120" data-brightness="110" data-saturation="130">Préréglage 2</button>
-
-    <div class="adjustments">
-      <label>Netteté</label>
-      <input type="range" id="sharpness" min="0" max="200" value="100">
-      <label>Contraste</label>
-      <input type="range" id="contrast" min="50" max="200" value="100">
-      <label>Luminosité</label>
-      <input type="range" id="brightness" min="50" max="200" value="100">
-      <label>Saturation</label>
-      <input type="range" id="saturation" min="50" max="200" value="100">
-    </div>
-
-    <button id="processButton">Transformer la Vidéo</button>
-    <p id="progress">Progression : 0%</p>
+  <div class="presets">
+    <button class="preset" data-sharpness="140" data-contrast="130" data-brightness="110" data-saturation="130">Préréglage Cinéma</button>
+    <button class="preset" data-sharpness="170" data-contrast="150" data-brightness="120" data-saturation="160">Préréglage Ultra</button>
   </div>
 
-  <script src="script.js"></script>
+  <button id="processButton">Transformer la vidéo</button>
+
+  <p id="progress"></p>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
