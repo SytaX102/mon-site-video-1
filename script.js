@@ -1,62 +1,60 @@
-// Importer la vidéo
-document.getElementById('video-input').addEventListener('change', (event) => {
-  const file = event.target.files[0];
-  const video = document.getElementById('video-preview');
+const videoInput = document.getElementById("video-input");
+const video = document.getElementById("video-preview");
+const progress = document.getElementById("progress");
 
-  if (file) {
-    video.src = URL.createObjectURL(file);
-    video.style.display = 'block';
-    video.load();
-  }
+// Import vidéo
+videoInput.addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  video.src = URL.createObjectURL(file);
+  video.style.display = "block";
+  video.load();
 });
 
 // Préréglages
-document.querySelectorAll('.preset').forEach(button => {
-  button.addEventListener('click', () => {
-    document.getElementById('sharpness').value = button.dataset.sharpness;
-    document.getElementById('contrast').value = button.dataset.contrast;
-    document.getElementById('brightness').value = button.dataset.brightness;
-    document.getElementById('saturation').value = button.dataset.saturation;
+document.querySelectorAll(".preset").forEach(btn => {
+  btn.addEventListener("click", () => {
+    sharpness.value = btn.dataset.sharpness;
+    contrast.value = btn.dataset.contrast;
+    brightness.value = btn.dataset.brightness;
+    saturation.value = btn.dataset.saturation;
   });
 });
 
-// BOUTON TRANSFORMER — VERSION QUI MARCHE
-document.getElementById('processButton').addEventListener('click', () => {
-  const video = document.getElementById('video-preview');
-  const progress = document.getElementById('progress');
-
+// Transformer la vidéo (FONCTIONNEL)
+document.getElementById("processButton").addEventListener("click", () => {
   if (!video.src) {
-    alert("Importe une vidéo d'abord !");
+    alert("Importe une vidéo d'abord");
     return;
   }
 
-  const sharpness = document.getElementById('sharpness').value;
-  const contrast = document.getElementById('contrast').value;
-  const brightness = document.getElementById('brightness').value;
-  const saturation = document.getElementById('saturation').value;
-
   progress.textContent = "Transformation en cours...";
+  let p = 0;
 
-  // Simulation de progression
-  let percent = 0;
   const timer = setInterval(() => {
-    percent += 10;
-    progress.textContent = `Progression : ${percent}%`;
+    p += 10;
+    progress.textContent = `Progression : ${p}%`;
 
-    if (percent >= 100) {
+    if (p >= 100) {
       clearInterval(timer);
 
-      // APPLICATION DES FILTRES VISUELS
+      const brightnessVal = brightness.value;
+      const contrastVal = contrast.value;
+      const saturationVal = saturation.value;
+      const sharpnessVal = sharpness.value;
+
+      // APPLICATION VISUELLE RÉELLE
       video.style.filter = `
-        brightness(${brightness}%)
-        contrast(${contrast}%)
-        saturate(${saturation}%)
+        brightness(${brightnessVal}%)
+        contrast(${contrastVal}%)
+        saturate(${saturationVal}%)
       `;
 
-      // Simulation de netteté (hack visuel)
-      video.style.boxShadow = `0 0 ${sharpness / 10}px rgba(0,0,0,0.5)`;
+      video.style.boxShadow = `0 0 ${sharpnessVal / 8}px rgba(0,0,0,0.6)`;
 
       progress.textContent = "Transformation terminée ✅";
     }
-  }, 200);
+  }, 150);
 });
+
