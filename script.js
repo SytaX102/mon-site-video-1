@@ -1,11 +1,18 @@
-const videoInput = document.getElementById("video-input");
-const video = document.getElementById("video-preview");
+const btn = document.getElementById('btnTransform');
+const videoOriginal = document.getElementById('videoOriginal');
+const videoTransformee = document.getElementById('videoTransformee');
 
-videoInput.addEventListener("change", (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
+btn.addEventListener('click', async () => {
+  btn.disabled = true;
+  btn.textContent = "Transformation en cours...";
 
-  video.src = URL.createObjectURL(file);
-  video.style.display = "block";
-  video.load();
+  // Simulation d'un traitement IA (ex: appel API)
+  await new Promise(resolve => setTimeout(resolve, 3000));
+
+  // Remplace la source vidéo par la vidéo transformée
+  videoTransformee.querySelector('source').src = 'video_amelioree.mp4';
+  videoTransformee.load();
+  videoTransformee.style.display = 'block';
+
+  btn.textContent = "Transformation terminée !";
 });
