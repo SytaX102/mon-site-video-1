@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Amélioration Vidéo</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+<html>
 <body>
 
-<h1>Amélioration Vidéo</h1>
+<h2>Test Import Vidéo</h2>
 
-<div class="box">
+<input type="file" id="file" accept="video/*">
 
-  <!-- IMPORT VIDEO -->
-  <input type="file" id="video-input" accept="video/*">
+<br><br>
 
+<video id="video" controls width="500"></video>
+
+<script>
+document.getElementById("file").onchange = function(e) {
+  const video = document.getElementById("video");
+  video.src = URL.createObjectURL(e.target.files[0]);
+  
   <!-- VIDEO -->
   <video id="video-preview" controls></video>
 
