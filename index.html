@@ -15,24 +15,35 @@
 
   <video id="video-preview" controls></video>
 
-  <div class="controls">
-    <label>Netteté</label>
-    <input type="range" id="sharpness" min="0" max="200" value="100">
+<div class="controls">
 
-    <label>Contraste</label>
-    <input type="range" id="contrast" min="50" max="200" value="100">
+  <h2>Pré-réglages</h2>
 
-    <label>Luminosité</label>
-    <input type="range" id="brightness" min="50" max="200" value="100">
+  <button class="preset" data-sharpness="140" data-contrast="130" data-brightness="110" data-saturation="130">Cinéma</button>
+  <button class="preset" data-sharpness="170" data-contrast="150" data-brightness="120" data-saturation="160">Ultra</button>
 
-    <label>Saturation</label>
-    <input type="range" id="saturation" min="50" max="200" value="100">
-  </div>
+  <label>Netteté</label>
+  <input type="range" id="sharpness" min="0" max="200" value="100">
 
-  <div class="presets">
-    <button class="preset" data-sharpness="140" data-contrast="130" data-brightness="110" data-saturation="130">Préréglage Cinéma</button>
-    <button class="preset" data-sharpness="170" data-contrast="150" data-brightness="120" data-saturation="160">Préréglage Ultra</button>
-  </div>
+  <label>Contraste</label>
+  <input type="range" id="contrast" min="50" max="200" value="100">
+
+  <label>Luminosité</label>
+  <input type="range" id="brightness" min="50" max="200" value="100">
+
+  <label>Saturation</label>
+  <input type="range" id="saturation" min="50" max="200" value="100">
+
+  <label>Qualité (720p → 8K)</label>
+  <input type="range" id="quality" min="720" max="8000" step="720" value="1080">
+  <span id="qualityValue">1080p</span>
+
+  <label>FPS (30 → 240)</label>
+  <input type="range" id="fps" min="30" max="240" step="30" value="60">
+  <span id="fpsValue">60 FPS</span>
+
+</div>
+
 
   <button id="processButton">Transformer la vidéo</button>
 
