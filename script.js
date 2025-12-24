@@ -1,18 +1,26 @@
-const btn = document.getElementById('btnTransform');
-const videoOriginal = document.getElementById('videoOriginal');
-const videoTransformee = document.getElementById('videoTransformee');
+// On attend que le DOM soit complètement chargé
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('btnTransform');
+  const videoOriginal = document.getElementById('videoOriginal');
+  const videoTransformee = document.getElementById('videoTransformee');
 
-btn.addEventListener('click', async () => {
-  btn.disabled = true;
-  btn.textContent = "Transformation en cours...";
+  if (!btn) {
+    console.error("Bouton non trouvé !");
+    return;
+  }
 
-  // Simulation d'un traitement IA (ex: appel API)
-  await new Promise(resolve => setTimeout(resolve, 3000));
+  btn.addEventListener('click', async () => {
+    btn.disabled = true;
+    btn.textContent = "Transformation en cours...";
 
-  // Remplace la source vidéo par la vidéo transformée
-  videoTransformee.querySelector('source').src = 'video_amelioree.mp4';
-  videoTransformee.load();
-  videoTransformee.style.display = 'block';
+    // Simulation d'un traitement IA
+    await new Promise(resolve => setTimeout(resolve, 3000));
 
-  btn.textContent = "Transformation terminée !";
+    // On remplace la vidéo par la transformée
+    videoTransformee.querySelector('source').src = 'video_amelioree.mp4';
+    videoTransformee.load();
+    videoTransformee.style.display = 'block';
+
+    btn.textContent = "Transformation terminée !";
+  });
 });
