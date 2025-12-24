@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Simulation d'un traitement IA
     await new Promise(resolve => setTimeout(resolve, 3000));
 
-    // On remplace la vidéo par la transformée
+    // On remplace la source par la vidéo transformée
     videoTransformee.querySelector('source').src = 'video_amelioree.mp4';
     videoTransformee.load();
     videoTransformee.style.display = 'block';
