@@ -1,44 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amélioration Vidéo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+    }
+    video {
+      max-width: 600px;
+      border: 2px solid #333;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #1e90ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #0f75d1;
+    }
+  </style>
+</head>
 <body>
 
-<h2>Test Import Vidéo</h2>
+  <h2>Comparatif Avant / Après</h2>
 
-<input type="file" id="file" accept="video/*">
+  <!-- Vidéo originale -->
+  <video id="videoOriginal" controls>
+    <source src="video.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas la vidéo.
+  </video>
 
-<br><br>
+  <!-- Vidéo transformée -->
+  <video id="videoTransformee" controls style="display:none;">
+    <source src="" type="video/mp4">
+    Votre navigateur ne supporte pas la vidéo.
+  </video>
 
-<video id="video" controls width="500"></video>
+  <button id="btnTransform">Appliquer Transformation IA</button>
 
-<script>
-document.getElementById("file").onchange = function(e) {
-  const video = document.getElementById("video");
-  video.src = URL.createObjectURL(e.target.files[0]);
-  
-  <!-- VIDEO -->
-  <video id="video-preview" controls></video>
+  <script>
+    const btn = document.getElementById('btnTransform');
+    const videoOriginal = document.getElementById('videoOriginal');
+    const videoTransformee = document.getElementById('videoTransformee');
 
-  <!-- SLIDERS -->
-  <label>Netteté</label>
-  <input type="range" id="sharpness" min="0" max="200" value="100">
+    btn.addEventListener('click', () => {
+      // Ici tu peux appeler ton API IA pour transformer la vidéo
+      // Exemple : simulation avec une autre vidéo
+      videoTransformee.querySelector('source').src = 'video_amelioree.mp4';
+      videoTransformee.load();
+      videoTransformee.style.display = 'block';
 
-  <label>Contraste</label>
-  <input type="range" id="contrast" min="50" max="200" value="100">
+      alert("Transformation appliquée ! Vous pouvez maintenant comparer.");
+    });
+  </script>
 
-  <label>Luminosité</label>
-  <input type="range" id="brightness" min="50" max="200" value="100">
-
-  <label>Saturation</label>
-  <input type="range" id="saturation" min="50" max="200" value="100">
-
-  <label>Qualité</label>
-  <input type="range" id="quality" min="720" max="8000" step="720" value="1080">
-
-  <label>FPS</label>
-  <input type="range" id="fps" min="30" max="240" step="30" value="60">
-
-</div>
-
-<script src="script.js"></script>
 </body>
 </html>
