@@ -4,32 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amélioration Vidéo</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
-  }
-  video {
-    max-width: 600px;
-    border: 2px solid #333;
-  }
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #1e90ff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-  }
-  button:hover {
-    background-color: #0f75d1;
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -45,29 +20,9 @@
   Votre navigateur ne supporte pas la vidéo.
 </video>
 
+<!-- Bouton ajouté directement dans le HTML -->
 <button id="btnTransform">Transformer la vidéo</button>
 
-<script>
-const btn = document.getElementById('btnTransform');
-const videoOriginal = document.getElementById('videoOriginal');
-const videoTransformee = document.getElementById('videoTransformee');
-
-btn.addEventListener('click', async () => {
-  btn.disabled = true;
-  btn.textContent = "Transformation en cours...";
-
-  // Simulation d'un traitement IA (ex: appel à ton backend)
-  // Ici on attend 3 secondes pour simuler le traitement
-  await new Promise(resolve => setTimeout(resolve, 3000));
-
-  // Après transformation : on change la source vidéo
-  videoTransformee.querySelector('source').src = 'video_amelioree.mp4';
-  videoTransformee.load();
-  videoTransformee.style.display = 'block';
-
-  btn.textContent = "Transformation terminée !";
-});
 <script src="script.js"></script>
-
 </body>
 </html>
