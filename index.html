@@ -3,28 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amélioration Vidéo</title>
+<title>Amélioration Vidéo avec Préréglages</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Amélioration Vidéo - Comparatif Avant / Après</h1>
+<h1>Amélioration Vidéo - Préréglages</h1>
 
 <div class="video-container">
   <!-- Vidéo originale -->
   <video id="videoOriginal" controls>
-    <source src="video.mp4" type="video/mp4">
     Votre navigateur ne supporte pas la vidéo.
   </video>
 
   <!-- Vidéo transformée -->
   <video id="videoTransformee" controls style="display:none;">
-    <source src="" type="video/mp4">
     Votre navigateur ne supporte pas la vidéo.
   </video>
 </div>
 
-<!-- Bouton pour transformer la vidéo -->
+<!-- Importer un fichier vidéo -->
+<label for="fileInput" class="file-label">Importer une vidéo</label>
+<input type="file" id="fileInput" accept="video/*">
+
+<!-- Sélecteur de préréglages -->
+<select id="presetSelect">
+  <option value="nettoyage">Nettoyage</option>
+  <option value="upscale">Upscale</option>
+  <option value="denoise">Denoise</option>
+</select>
+
+<!-- Bouton pour transformer -->
 <button id="btnTransform">Transformer la vidéo</button>
 
 <script src="script.js"></script>
